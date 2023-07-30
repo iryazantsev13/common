@@ -92,3 +92,10 @@ func parseLevel(level string) (slog.Leveler, error) {
 		return nil, fmt.Errorf("unknown level Log - %v (valid value: trace/debug/info/notice/warning/error/fatal)", level)
 	}
 }
+
+func Err(err error) slog.Attr {
+	return slog.Attr{
+		Key:   "error",
+		Value: slog.StringValue(err.Error()),
+	}
+}
